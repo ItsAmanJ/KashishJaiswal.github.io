@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kashish | MBA Finance Portfolio</title>
+  <meta name="description" content="Personal portfolio of Kashish — MBA Finance student, aspiring financial analyst and data-driven decision maker." />
+
+  <!-- Google Fonts: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NOISE TEXTURE OVERLAY
+  ============================================================ -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       BACKGROUND ORBS (decorative)
+  ============================================================ -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header id="header">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <a href="#hero" class="nav-logo">K<span class="accent">.</span></a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#about"        class="nav-link">About</a></li>
+        <li><a href="#skills"       class="nav-link">Skills</a></li>
+        <li><a href="#education"    class="nav-link">Education</a></li>
+        <li><a href="#projects"     class="nav-link">Projects</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#learning"     class="nav-link">Learning</a></li>
+        <li><a href="#contact"      class="nav-link cta-nav">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-content">
+        <p class="hero-greeting" aria-hidden="true">Hello, I'm</p>
+        <h1 class="hero-name">Kashish</h1>
+        <h2 class="hero-tagline">
+          MBA Finance Student &nbsp;·&nbsp; Aspiring Financial Analyst
+          <br class="tagline-break" />
+          &nbsp;·&nbsp; Data-Driven Decision Maker
+        </h2>
+        <p class="hero-intro">
+          I bridge <em>numbers and strategy</em> — transforming complex financial data
+          into clear, actionable insights that drive smarter business decisions.
+          Passionate about markets, valuations, and building a purposeful career in finance.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            <span>View Projects</span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+
+        <!-- Floating stats -->
+        <div class="hero-stats" role="list">
+          <div class="stat-pill" role="listitem">
+            <span class="stat-num">MBA</span>
+            <span class="stat-label">Finance</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-pill" role="listitem">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-pill" role="listitem">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Ambition</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative chart lines SVG -->
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="chart-svg" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#c9a84c" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#f0d080" stop-opacity="0.6"/>
+            </linearGradient>
+            <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid lines -->
+          <line x1="0" y1="200" x2="400" y2="200" stroke="#ffffff08" stroke-width="1"/>
+          <line x1="0" y1="150" x2="400" y2="150" stroke="#ffffff08" stroke-width="1"/>
+          <line x1="0" y1="100" x2="400" y2="100" stroke="#ffffff08" stroke-width="1"/>
+          <line x1="0" y1="50"  x2="400" y2="50"  stroke="#ffffff08" stroke-width="1"/>
+          <!-- Area fill -->
+          <path class="chart-fill" d="M0,200 L40,185 L80,190 L120,165 L160,155 L200,130 L240,120 L280,90 L320,75 L360,55 L400,40 L400,200 Z" fill="url(#fillGrad)"/>
+          <!-- Main line -->
+          <path class="chart-line" d="M0,200 L40,185 L80,190 L120,165 L160,155 L200,130 L240,120 L280,90 L320,75 L360,55 L400,40" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Dots -->
+          <circle cx="280" cy="90" r="5" fill="#c9a84c"/>
+          <circle cx="360" cy="55" r="5" fill="#c9a84c"/>
+          <circle cx="400" cy="40" r="6" fill="#f0d080" filter="url(#glow)"/>
+          <defs>
+            <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+        </svg>
+        <p class="chart-label">Growth Trajectory</p>
+      </div>
+
+      <!-- Scroll cue -->
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <span class="scroll-cue-text">Scroll</span>
+        <span class="scroll-cue-line"></span>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         ABOUT SECTION
+    ============================================================ -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">01 &mdash; Who I Am</span>
+          <h2 class="section-title">About <span class="accent">Me</span></h2>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left: avatar placeholder -->
+          <div class="about-avatar-wrap">
+            <div class="about-avatar glass-card">
+              <div class="avatar-initials">K</div>
+              <div class="avatar-ring"></div>
+              <div class="avatar-ring avatar-ring--2"></div>
+            </div>
+            <!-- Floating badge -->
+            <div class="avatar-badge glass-card">
+              <span class="badge-icon">📈</span>
+              <div>
+                <strong>Finance</strong>
+                <small>Specialist</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: bio -->
+          <div class="about-body">
+            <p class="about-text">
+              I'm <strong>Kashish</strong>, an MBA/PGDM student specializing in <strong>Finance</strong> with a sharp
+              analytical mindset and a deep passion for financial markets, investment strategy, and data-driven
+              business decisions.
+            </p>
+            <p class="about-text">
+              I thrive at the intersection of <em>numbers and narrative</em> — whether it's dissecting a
+              company's balance sheet, building a financial model, or crafting a compelling business case.
+              My approach is always rooted in evidence, clarity, and strategic thinking.
+            </p>
+            <p class="about-text">
+              Career-focused and growth-oriented, I'm actively building expertise in corporate finance,
+              investment analysis, and business analytics — positioning myself for impactful roles in
+              financial services, consulting, or corporate strategy.
+            </p>
+
+            <div class="about-tags" role="list">
+              <span class="tag" role="listitem">📊 Financial Analysis</span>
+              <span class="tag" role="listitem">💼 Business Strategy</span>
+              <span class="tag" role="listitem">🔍 Research &amp; Insights</span>
+              <span class="tag" role="listitem">📉 Markets &amp; Investments</span>
+              <span class="tag" role="listitem">🧠 Analytical Thinking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS SECTION
+    ============================================================ -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">02 &mdash; What I Know</span>
+          <h2 class="section-title">My <span class="accent">Skills</span></h2>
+        </div>
+
+        <div class="skills-grid">
+
+          <!-- Financial Skills -->
+          <div class="skill-card glass-card" data-category="financial">
+            <div class="skill-card-icon">💹</div>
+            <h3 class="skill-card-title">Financial Skills</h3>
+            <ul class="skill-list" role="list">
+              <li class="skill-item">
+                <span class="skill-name">Financial Analysis</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:88%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Investment Analysis</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:82%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Ratio Analysis</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:85%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Budgeting &amp; Forecasting</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:78%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Technical Skills -->
+          <div class="skill-card glass-card" data-category="technical">
+            <div class="skill-card-icon">🖥️</div>
+            <h3 class="skill-card-title">Technical Skills</h3>
+            <ul class="skill-list" role="list">
+              <li class="skill-item">
+                <span class="skill-name">Microsoft Excel (Advanced)</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:90%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">PowerPoint / Presentations</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:88%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Power BI / Tableau</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:65%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Business Analytics</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:72%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-card glass-card" data-category="soft">
+            <div class="skill-card-icon">🤝</div>
+            <h3 class="skill-card-title">Soft Skills</h3>
+            <ul class="skill-list" role="list">
+              <li class="skill-item">
+                <span class="skill-name">Communication</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:92%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Problem Solving</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:87%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Teamwork &amp; Collaboration</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:90%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Critical Thinking</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:85%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EDUCATION SECTION
+    ============================================================ -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">03 &mdash; My Background</span>
+          <h2 class="section-title">Edu<span class="accent">cation</span></h2>
+        </div>
+
+        <div class="education-timeline">
+
+          <div class="edu-card glass-card">
+            <div class="edu-badge">🎓</div>
+            <div class="edu-body">
+              <div class="edu-meta">
+                <span class="edu-type">Postgraduate</span>
+                <span class="edu-year">2023 – Present</span>
+              </div>
+              <h3 class="edu-degree">MBA / PGDM — Finance Specialization</h3>
+              <p class="edu-institution">Institute of Management Studies</p>
+              <p class="edu-desc">
+                Focused curriculum on corporate finance, investment strategy, and business analytics.
+                Engaging in case studies, live projects, and industry interactions to build practical
+                finance expertise.
+              </p>
+              <div class="edu-courses">
+                <strong class="courses-label">Core Coursework:</strong>
+                <div class="course-tags">
+                  <span class="course-tag">Corporate Finance</span>
+                  <span class="course-tag">Investment Analysis</span>
+                  <span class="course-tag">Financial Markets</span>
+                  <span class="course-tag">Business Analytics</span>
+                  <span class="course-tag">Managerial Accounting</span>
+                  <span class="course-tag">Strategic Management</span>
+                  <span class="course-tag">Financial Modelling</span>
+                  <span class="course-tag">Derivatives &amp; Risk</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="edu-card glass-card edu-card--secondary">
+            <div class="edu-badge">🏫</div>
+            <div class="edu-body">
+              <div class="edu-meta">
+                <span class="edu-type">Undergraduate</span>
+                <span class="edu-year">2020 – 2023</span>
+              </div>
+              <h3 class="edu-degree">Bachelor of Commerce (B.Com)</h3>
+              <p class="edu-institution">University / College</p>
+              <p class="edu-desc">
+                Built a strong foundation in accounting, economics, taxation, and business law —
+                forming the analytical base for advanced finance studies.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS SECTION
+    ============================================================ -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">04 &mdash; My Work</span>
+          <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <article class="project-card glass-card" data-index="01">
+            <div class="project-num">01</div>
+            <div class="project-top">
+              <span class="project-category">Behavioral Finance</span>
+              <div class="project-links">
+                <a href="#" class="icon-btn" aria-label="View on GitHub" title="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.254-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.202 2.394.1 2.646.64.699 1.026 1.591 1.026 2.682 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+                <a href="#" class="icon-btn" aria-label="View details" title="View Details">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Financial Literacy &amp; Investment Behavior Analysis</h3>
+            <p class="project-desc">
+              A comprehensive research study examining the relationship between financial literacy levels
+              and investment decision-making behavior among young professionals. Involved primary data
+              collection, statistical analysis, and policy-level recommendations.
+            </p>
+            <div class="project-skills">
+              <span class="skill-tag">Research Methodology</span>
+              <span class="skill-tag">Data Analysis</span>
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">Behavioral Finance</span>
+            </div>
+            <a href="#" class="btn btn-outline project-btn">View Details →</a>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card glass-card" data-index="02">
+            <div class="project-num">02</div>
+            <div class="project-top">
+              <span class="project-category">Financial Analysis</span>
+              <div class="project-links">
+                <a href="#" class="icon-btn" aria-label="View on GitHub" title="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.254-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.202 2.394.1 2.646.64.699 1.026 1.591 1.026 2.682 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+                <a href="#" class="icon-btn" aria-label="View details" title="View Details">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Company Financial Analysis &amp; Valuation</h3>
+            <p class="project-desc">
+              Deep-dive financial analysis of a listed company covering 5-year trend analysis,
+              ratio analysis (liquidity, solvency, profitability), DuPont decomposition, and
+              intrinsic valuation using DCF methodology to assess investment potential.
+            </p>
+            <div class="project-skills">
+              <span class="skill-tag">DCF Valuation</span>
+              <span class="skill-tag">Ratio Analysis</span>
+              <span class="skill-tag">Financial Modeling</span>
+              <span class="skill-tag">Excel</span>
+            </div>
+            <a href="#" class="btn btn-outline project-btn">View Details →</a>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card glass-card" data-index="03">
+            <div class="project-num">03</div>
+            <div class="project-top">
+              <span class="project-category">Business Strategy</span>
+              <div class="project-links">
+                <a href="#" class="icon-btn" aria-label="View on GitHub" title="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.254-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.202 2.394.1 2.646.64.699 1.026 1.591 1.026 2.682 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+                <a href="#" class="icon-btn" aria-label="View details" title="View Details">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Starbucks — Strategic Business Case Study</h3>
+            <p class="project-desc">
+              Comprehensive business case study analyzing Starbucks' global expansion strategy,
+              competitive positioning, supply chain finance, and customer experience economics.
+              Includes SWOT analysis, Porter's Five Forces, and strategic recommendations.
+            </p>
+            <div class="project-skills">
+              <span class="skill-tag">Strategic Analysis</span>
+              <span class="skill-tag">Porter's 5 Forces</span>
+              <span class="skill-tag">SWOT</span>
+              <span class="skill-tag">PowerPoint</span>
+            </div>
+            <a href="#" class="btn btn-outline project-btn">View Details →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ACHIEVEMENTS SECTION
+    ============================================================ -->
+    <section id="achievements" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">05 &mdash; Milestones</span>
+          <h2 class="section-title">Achieve<span class="accent">ments</span></h2>
+        </div>
+
+        <div class="achievements-grid">
+
+          <div class="ach-card glass-card">
+            <div class="ach-icon">🏆</div>
+            <div class="ach-body">
+              <h3 class="ach-title">Academic Excellence</h3>
+              <p class="ach-desc">Consistently strong academic performance across finance and business subjects, demonstrating depth of understanding and rigorous analytical ability.</p>
+            </div>
+          </div>
+
+          <div class="ach-card glass-card">
+            <div class="ach-icon">📋</div>
+            <div class="ach-body">
+              <h3 class="ach-title">Live Project Completion</h3>
+              <p class="ach-desc">Successfully completed multiple live academic projects in financial analysis, investment behavior research, and strategic business case studies.</p>
+            </div>
+          </div>
+
+          <div class="ach-card glass-card">
+            <div class="ach-icon">🎤</div>
+            <div class="ach-body">
+              <h3 class="ach-title">Case Study Presentations</h3>
+              <p class="ach-desc">Presented business case studies and financial analyses to faculty and peer groups, receiving recognition for clarity, depth, and strategic insight.</p>
+            </div>
+          </div>
+
+          <div class="ach-card glass-card">
+            <div class="ach-icon">📊</div>
+            <div class="ach-body">
+              <h3 class="ach-title">Research Contribution</h3>
+              <p class="ach-desc">Conducted independent research on financial literacy and investment behavior, contributing original data-driven insights to the field.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CURRENTLY LEARNING SECTION
+    ============================================================ -->
+    <section id="learning" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">06 &mdash; Always Growing</span>
+          <h2 class="section-title">Currently <span class="accent">Learning</span></h2>
+        </div>
+
+        <div class="learning-grid">
+
+          <div class="learn-card glass-card">
+            <div class="learn-progress-wrap">
+              <svg class="learn-ring" viewBox="0 0 80 80" aria-hidden="true">
+                <circle cx="40" cy="40" r="32" stroke="#ffffff10" stroke-width="6" fill="none"/>
+                <circle cx="40" cy="40" r="32" stroke="#c9a84c" stroke-width="6" fill="none"
+                  stroke-dasharray="201" stroke-dashoffset="50" stroke-linecap="round"
+                  transform="rotate(-90 40 40)"/>
+              </svg>
+              <span class="learn-pct">75%</span>
+            </div>
+            <h3 class="learn-title">Financial Modeling</h3>
+            <p class="learn-desc">Building 3-statement models, DCF, LBO, and scenario analysis using Excel.</p>
+          </div>
+
+          <div class="learn-card glass-card">
+            <div class="learn-progress-wrap">
+              <svg class="learn-ring" viewBox="0 0 80 80" aria-hidden="true">
+                <circle cx="40" cy="40" r="32" stroke="#ffffff10" stroke-width="6" fill="none"/>
+                <circle cx="40" cy="40" r="32" stroke="#c9a84c" stroke-width="6" fill="none"
+                  stroke-dasharray="201" stroke-dashoffset="30" stroke-linecap="round"
+                  transform="rotate(-90 40 40)"/>
+              </svg>
+              <span class="learn-pct">85%</span>
+            </div>
+            <h3 class="learn-title">Advanced Excel</h3>
+            <p class="learn-desc">Mastering pivot tables, VLOOKUP/INDEX-MATCH, Power Query, and dashboards.</p>
+          </div>
+
+          <div class="learn-card glass-card">
+            <div class="learn-progress-wrap">
+              <svg class="learn-ring" viewBox="0 0 80 80" aria-hidden="true">
+                <circle cx="40" cy="40" r="32" stroke="#ffffff10" stroke-width="6" fill="none"/>
+                <circle cx="40" cy="40" r="32" stroke="#c9a84c" stroke-width="6" fill="none"
+                  stroke-dasharray="201" stroke-dashoffset="80" stroke-linecap="round"
+                  transform="rotate(-90 40 40)"/>
+              </svg>
+              <span class="learn-pct">60%</span>
+            </div>
+            <h3 class="learn-title">Stock Market Analysis</h3>
+            <p class="learn-desc">Technical and fundamental analysis, reading financial statements, sector research.</p>
+          </div>
+
+          <div class="learn-card glass-card">
+            <div class="learn-progress-wrap">
+              <svg class="learn-ring" viewBox="0 0 80 80" aria-hidden="true">
+                <circle cx="40" cy="40" r="32" stroke="#ffffff10" stroke-width="6" fill="none"/>
+                <circle cx="40" cy="40" r="32" stroke="#c9a84c" stroke-width="6" fill="none"
+                  stroke-dasharray="201" stroke-dashoffset="60" stroke-linecap="round"
+                  transform="rotate(-90 40 40)"/>
+              </svg>
+              <span class="learn-pct">70%</span>
+            </div>
+            <h3 class="learn-title">Business Analytics</h3>
+            <p class="learn-desc">Data visualization, statistical analysis, and decision-making frameworks using BI tools.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT SECTION
+    ============================================================ -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">07 &mdash; Let's Talk</span>
+          <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Left: Info -->
+          <div class="contact-info">
+            <p class="contact-intro">
+              Whether you're looking to collaborate on a project, discuss finance, or explore
+              internship and placement opportunities — I'd love to hear from you.
+            </p>
+
+            <div class="contact-links">
+              <a href="mailto:kashish@example.com" class="contact-item glass-card">
+                <span class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <div>
+                  <strong>Email</strong>
+                  <span>kashish@example.com</span>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/kashish" target="_blank" rel="noopener noreferrer" class="contact-item glass-card">
+                <span class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                </span>
+                <div>
+                  <strong>LinkedIn</strong>
+                  <span>linkedin.com/in/kashish</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/kashish" target="_blank" rel="noopener noreferrer" class="contact-item glass-card">
+                <span class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.254-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.202 2.394.1 2.646.64.699 1.026 1.591 1.026 2.682 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </span>
+                <div>
+                  <strong>GitHub</strong>
+                  <span>github.com/kashish</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <form class="contact-form glass-card" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="fname">Full Name</label>
+              <input type="text" id="fname" name="name" placeholder="Your full name" autocomplete="name" />
+              <span class="form-error" id="nameError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" name="email" placeholder="your@email.com" autocomplete="email" />
+              <span class="form-error" id="emailError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="e.g. Internship Opportunity" />
+              <span class="form-error" id="subjectError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="message" rows="5" placeholder="Write your message here..."></textarea>
+              <span class="form-error" id="messageError" role="alert"></span>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">
+              <span>Send Message</span>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 10h16M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+              ✅ Thank you! Your message has been sent.
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">K<span class="accent">.</span></div>
+      <p class="footer-quote">
+        &ldquo;Turning data into decisions and ambition into achievement.&rdquo;
+      </p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; <span id="year"></span> Kashish. Crafted with purpose.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
