@@ -212,51 +212,62 @@ document.addEventListener('DOMContentLoaded', () => {
      9. GSAP ANIMATIONS
   --------------------------------------------------------------- */
   if (typeof gsap === 'undefined') {
-    // Fallback: show everything if GSAP didn't load
-    document.querySelectorAll('.hero-greeting, .hero-name, .hero-tagline, .hero-intro, .hero-cta, .hero-stats, .hero-visual')
-      .forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    // Fallback: if GSAP didn't load, make all hero elements visible immediately
+    ['.hero-greeting','.hero-name','.hero-tagline','.hero-intro','.hero-cta','.hero-stats','.hero-visual']
+      .forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.visibility = 'visible'; }
+      });
     return;
   }
 
   /* ---- 9a. Hero Section Timeline ---- */
-  const heroTl = gsap.timeline({ delay: 0.15 });
+  // Use fromTo() so GSAP controls BOTH start (hidden) and end (visible) states.
+  // This avoids the bug where CSS opacity:0 + .from({opacity:0}) animates 0→0 and stays invisible.
+
+  const heroTl = gsap.timeline({ delay: 0.2 });
 
   heroTl
-    .to('.hero-greeting', {
-      opacity: 1,
-      y: 0,
-      duration: 0.7,
-      ease: 'power3.out',
-      from: { y: 20, opacity: 0 }
-    })
-    .from('.hero-name', {
-      opacity: 0,
-      y: 60,
-      skewY: 4,
-      duration: 1,
-      ease: 'power4.out'
-    }, '-=0.3')
-    .to('.hero-name', { opacity: 1 }, '<')
-    .from('.hero-tagline', { opacity: 0, y: 24, duration: 0.65, ease: 'power3.out' }, '-=0.5')
-    .to('.hero-tagline', { opacity: 1 }, '<')
-    .from('.hero-intro', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-    .to('.hero-intro', { opacity: 1 }, '<')
-    .from('.hero-cta', { opacity: 0, y: 16, duration: 0.55, ease: 'power3.out' }, '-=0.35')
-    .to('.hero-cta', { opacity: 1 }, '<')
-    .from('.hero-stats', { opacity: 0, y: 14, duration: 0.5, ease: 'power3.out' }, '-=0.3')
-    .to('.hero-stats', { opacity: 1 }, '<')
-    .from('.hero-visual', { opacity: 0, x: 40, duration: 0.9, ease: 'power3.out' }, '-=0.8')
-    .to('.hero-visual', { opacity: 1 }, '<');
+    .fromTo('.hero-greeting',
+      { autoAlpha: 0, y: 20 },
+      { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+    )
+    .fromTo('.hero-name',
+      { autoAlpha: 0, y: 60, skewY: 4 },
+      { autoAlpha: 1, y: 0, skewY: 0, duration: 1, ease: 'power4.out' },
+      '-=0.3'
+    )
+    .fromTo('.hero-tagline',
+      { autoAlpha: 0, y: 24 },
+      { autoAlpha: 1, y: 0, duration: 0.65, ease: 'power3.out' },
+      '-=0.5'
+    )
+    .fromTo('.hero-intro',
+      { autoAlpha: 0, y: 20 },
+      { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+      '-=0.4'
+    )
+    .fromTo('.hero-cta',
+      { autoAlpha: 0, y: 16 },
+      { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' },
+      '-=0.35'
+    )
+    .fromTo('.hero-stats',
+      { autoAlpha: 0, y: 14 },
+      { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+      '-=0.3'
+    )
+    .fromTo('.hero-visual',
+      { autoAlpha: 0, x: 40 },
+      { autoAlpha: 1, x: 0, duration: 0.9, ease: 'power3.out' },
+      '-=0.8'
+    );
 
   /* ---- 9b. Stat pills stagger ---- */
-  gsap.from('.stat-pill', {
-    opacity: 0,
-    y: 12,
-    stagger: 0.1,
-    duration: 0.5,
-    ease: 'back.out(2)',
-    delay: 1.6
-  });
+  gsap.fromTo('.stat-pill',
+    { autoAlpha: 0, y: 12 },
+    { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(2)', delay: 1.6 }
+  );
 
   /* ---- 9c. About Section ---- */
   ScrollTrigger.create({
@@ -489,10 +500,5 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: targetTop, behavior: 'smooth' });
     });
   });
-
-  /* ---------------------------------------------------------------
-     11. GSAP HERO GREETING — override opacity since it starts at 0
-  --------------------------------------------------------------- */
-  gsap.set('.hero-greeting', { opacity: 1, y: 0 });
 
 }); // end DOMContentLoaded
