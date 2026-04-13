@@ -212,196 +212,126 @@ document.addEventListener('DOMContentLoaded', () => {
      9. GSAP ANIMATIONS
   --------------------------------------------------------------- */
   if (typeof gsap === 'undefined') {
-    // Fallback: if GSAP didn't load, make all hero elements visible immediately
-    ['.hero-greeting','.hero-name','.hero-tagline','.hero-intro','.hero-cta','.hero-stats','.hero-visual']
-      .forEach(sel => {
-        const el = document.querySelector(sel);
-        if (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.visibility = 'visible'; }
-      });
+    // Fallback: show everything if GSAP didn't load
+    document.querySelectorAll('.hero-greeting, .hero-name, .hero-tagline, .hero-intro, .hero-cta, .hero-stats, .hero-visual')
+      .forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
     return;
   }
 
   /* ---- 9a. Hero Section Timeline ---- */
-  // Use fromTo() so GSAP controls BOTH start (hidden) and end (visible) states.
-  // This avoids the bug where CSS opacity:0 + .from({opacity:0}) animates 0→0 and stays invisible.
-
-  const heroTl = gsap.timeline({ delay: 0.2 });
+  const heroTl = gsap.timeline({ delay: 0.15 });
 
   heroTl
-    .fromTo('.hero-greeting',
-      { autoAlpha: 0, y: 20 },
-      { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+    .fromTo('.hero-greeting', 
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
     )
-    .fromTo('.hero-name',
-      { autoAlpha: 0, y: 60, skewY: 4 },
-      { autoAlpha: 1, y: 0, skewY: 0, duration: 1, ease: 'power4.out' },
-      '-=0.3'
-    )
-    .fromTo('.hero-tagline',
-      { autoAlpha: 0, y: 24 },
-      { autoAlpha: 1, y: 0, duration: 0.65, ease: 'power3.out' },
-      '-=0.5'
-    )
-    .fromTo('.hero-intro',
-      { autoAlpha: 0, y: 20 },
-      { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-      '-=0.4'
-    )
-    .fromTo('.hero-cta',
-      { autoAlpha: 0, y: 16 },
-      { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' },
-      '-=0.35'
-    )
-    .fromTo('.hero-stats',
-      { autoAlpha: 0, y: 14 },
-      { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out' },
-      '-=0.3'
-    )
-    .fromTo('.hero-visual',
-      { autoAlpha: 0, x: 40 },
-      { autoAlpha: 1, x: 0, duration: 0.9, ease: 'power3.out' },
-      '-=0.8'
-    );
+    .from('.hero-name', {
+      opacity: 0,
+      y: 60,
+      skewY: 4,
+      duration: 1,
+      ease: 'power4.out'
+    }, '-=0.3')
+    .to('.hero-name', { opacity: 1 }, '<')
+    .from('.hero-tagline', { opacity: 0, y: 24, duration: 0.65, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-tagline', { opacity: 1 }, '<')
+    .from('.hero-intro', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+    .to('.hero-intro', { opacity: 1 }, '<')
+    .from('.hero-cta', { opacity: 0, y: 16, duration: 0.55, ease: 'power3.out' }, '-=0.35')
+    .to('.hero-cta', { opacity: 1 }, '<')
+    .from('.hero-stats', { opacity: 0, y: 14, duration: 0.5, ease: 'power3.out' }, '-=0.3')
+    .to('.hero-stats', { opacity: 1 }, '<')
+    .from('.hero-visual', { opacity: 0, x: 40, duration: 0.9, ease: 'power3.out' }, '-=0.8')
+    .to('.hero-visual', { opacity: 1 }, '<');
 
   /* ---- 9b. Stat pills stagger ---- */
-  gsap.fromTo('.stat-pill',
-    { autoAlpha: 0, y: 12 },
-    { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(2)', delay: 1.6 }
-  );
+  gsap.from('.stat-pill', {
+    opacity: 0,
+    y: 12,
+    stagger: 0.1,
+    duration: 0.5,
+    ease: 'back.out(2)',
+    delay: 1.6
+  });
 
   /* ---- 9c. About Section ---- */
-  ScrollTrigger.create({
-    trigger: '#about',
-    start: 'top 80%',
-    onEnter: () => {
-      gsap.from('.about-avatar-wrap', {
-        opacity: 0, x: -50, duration: 0.9, ease: 'power3.out'
-      });
-      gsap.from('.about-body p', {
-        opacity: 0, y: 24, stagger: 0.15, duration: 0.7, ease: 'power3.out', delay: 0.2
-      });
-      gsap.from('.tag', {
-        opacity: 0, scale: 0.85, stagger: 0.08, duration: 0.5, ease: 'back.out(2)', delay: 0.6
-      });
-    },
-    once: true
+  gsap.from('.about-avatar-wrap', {
+    scrollTrigger: { trigger: '#about', start: 'top 80%', once: true },
+    opacity: 0, x: -50, duration: 0.9, ease: 'power3.out'
+  });
+  
+  gsap.from('.about-body p', {
+    scrollTrigger: { trigger: '#about', start: 'top 80%', once: true },
+    opacity: 0, y: 24, stagger: 0.15, duration: 0.7, ease: 'power3.out', delay: 0.2
+  });
+  
+  gsap.from('.tag', {
+    scrollTrigger: { trigger: '#about', start: 'top 80%', once: true },
+    opacity: 0, scale: 0.85, stagger: 0.08, duration: 0.5, ease: 'back.out(2)', delay: 0.6
   });
 
   /* ---- 9d. Skills Cards Stagger ---- */
-  ScrollTrigger.create({
-    trigger: '#skills',
-    start: 'top 75%',
-    onEnter: () => {
-      gsap.from('.skill-card', {
-        opacity: 0,
-        y: 50,
-        rotateX: 8,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
-        transformOrigin: 'top center'
-      });
-    },
-    once: true
+  gsap.from('.skill-card', {
+    scrollTrigger: { trigger: '#skills', start: 'top 75%', once: true },
+    opacity: 0, y: 50, rotateX: 8, stagger: 0.15, duration: 0.8, ease: 'power3.out', transformOrigin: 'top center',
+    clearProps: 'all'
   });
 
   /* ---- 9e. Education Cards ---- */
-  ScrollTrigger.create({
-    trigger: '#education',
-    start: 'top 78%',
-    onEnter: () => {
-      gsap.from('.edu-card', {
-        opacity: 0,
-        x: -40,
-        stagger: 0.2,
-        duration: 0.75,
-        ease: 'power3.out'
-      });
-    },
-    once: true
+  gsap.from('.edu-card', {
+    scrollTrigger: { trigger: '#education', start: 'top 78%', once: true },
+    opacity: 0, x: -40, stagger: 0.2, duration: 0.75, ease: 'power3.out',
+    clearProps: 'all'
   });
 
   /* ---- 9f. Project Cards Stagger ---- */
-  ScrollTrigger.create({
-    trigger: '#projects',
-    start: 'top 78%',
-    onEnter: () => {
-      gsap.from('.project-card', {
-        opacity: 0,
-        y: 60,
-        stagger: 0.18,
-        duration: 0.85,
-        ease: 'power4.out'
-      });
-    },
-    once: true
+  gsap.from('.project-card', {
+    scrollTrigger: { trigger: '#projects', start: 'top 78%', once: true },
+    opacity: 0, y: 60, stagger: 0.18, duration: 0.85, ease: 'power4.out',
+    clearProps: 'all'
   });
 
   /* ---- 9g. Achievement Cards ---- */
-  ScrollTrigger.create({
-    trigger: '#achievements',
-    start: 'top 78%',
-    onEnter: () => {
-      gsap.from('.ach-card', {
-        opacity: 0,
-        y: 36,
-        scale: 0.96,
-        stagger: 0.12,
-        duration: 0.7,
-        ease: 'back.out(1.5)'
-      });
-    },
-    once: true
+  gsap.from('.ach-card', {
+    scrollTrigger: { trigger: '#achievements', start: 'top 78%', once: true },
+    opacity: 0, y: 36, scale: 0.96, stagger: 0.12, duration: 0.7, ease: 'back.out(1.5)',
+    clearProps: 'all'
   });
 
   /* ---- 9h. Learning Cards ---- */
-  ScrollTrigger.create({
-    trigger: '#learning',
-    start: 'top 80%',
-    onEnter: () => {
-      gsap.from('.learn-card', {
-        opacity: 0,
-        y: 40,
-        stagger: 0.12,
-        duration: 0.7,
-        ease: 'power3.out'
-      });
-    },
-    once: true
+  gsap.from('.learn-card', {
+    scrollTrigger: { trigger: '#learning', start: 'top 80%', once: true },
+    opacity: 0, y: 40, stagger: 0.12, duration: 0.7, ease: 'power3.out',
+    clearProps: 'all'
   });
 
   /* ---- 9i. Contact Section ---- */
-  ScrollTrigger.create({
-    trigger: '#contact',
-    start: 'top 80%',
-    onEnter: () => {
-      gsap.from('.contact-info', {
-        opacity: 0, x: -40, duration: 0.85, ease: 'power3.out'
-      });
-      gsap.from('.contact-item', {
-        opacity: 0, x: -24, stagger: 0.1, duration: 0.6, ease: 'power3.out', delay: 0.25
-      });
-      gsap.from('.contact-form', {
-        opacity: 0, x: 40, duration: 0.85, ease: 'power3.out'
-      });
-    },
-    once: true
+  gsap.from('.contact-info', {
+    scrollTrigger: { trigger: '#contact', start: 'top 80%', once: true },
+    opacity: 0, x: -40, duration: 0.85, ease: 'power3.out'
+  });
+  
+  gsap.from('.contact-item', {
+    scrollTrigger: { trigger: '#contact', start: 'top 80%', once: true },
+    opacity: 0, x: -24, stagger: 0.1, duration: 0.6, ease: 'power3.out', delay: 0.25,
+    clearProps: 'all'
+  });
+  
+  gsap.from('.contact-form', {
+    scrollTrigger: { trigger: '#contact', start: 'top 80%', once: true },
+    opacity: 0, x: 40, duration: 0.85, ease: 'power3.out'
   });
 
   /* ---- 9j. Section Headers (all) ---- */
   document.querySelectorAll('.section-header').forEach(header => {
-    ScrollTrigger.create({
-      trigger: header,
-      start: 'top 85%',
-      onEnter: () => {
-        gsap.from(header.querySelector('.section-label'), {
-          opacity: 0, y: 12, duration: 0.5, ease: 'power2.out'
-        });
-        gsap.from(header.querySelector('.section-title'), {
-          opacity: 0, y: 20, duration: 0.7, ease: 'power3.out', delay: 0.1
-        });
-      },
-      once: true
+    gsap.from(header.querySelector('.section-label'), {
+      scrollTrigger: { trigger: header, start: 'top 85%', once: true },
+      opacity: 0, y: 12, duration: 0.5, ease: 'power2.out'
+    });
+    gsap.from(header.querySelector('.section-title'), {
+      scrollTrigger: { trigger: header, start: 'top 85%', once: true },
+      opacity: 0, y: 20, duration: 0.7, ease: 'power3.out', delay: 0.1
     });
   });
 
@@ -445,19 +375,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---- 9m. Footer entrance ---- */
-  ScrollTrigger.create({
-    trigger: 'footer',
-    start: 'top 90%',
-    onEnter: () => {
-      gsap.from('.footer-inner > *', {
-        opacity: 0,
-        y: 16,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
-    },
-    once: true
+  gsap.from('.footer-inner > *', {
+    scrollTrigger: { trigger: 'footer', start: 'top 90%', once: true },
+    opacity: 0, y: 16, stagger: 0.1, duration: 0.6, ease: 'power2.out'
   });
 
   /* ---- 9n. Scroll cue fade ---- */
